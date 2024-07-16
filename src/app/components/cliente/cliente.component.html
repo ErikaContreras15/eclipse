@@ -1,0 +1,30 @@
+<div class="container">
+    <h2>Clientes</h2>
+    
+    <form (ngSubmit)="saveCliente()">
+      <div>
+        <label>Cédula:</label>
+        <input [(ngModel)]="selectedCliente.cedula" name="cedula" required>
+      </div>
+      <div>
+        <label>Nombre:</label>
+        <input [(ngModel)]="selectedCliente.nombre" name="nombre" required>
+      </div>
+      <div>
+        <label>Dirección:</label>
+        <input [(ngModel)]="selectedCliente.direccion" name="direccion" required>
+      </div>
+      <button type="submit">{{ isEditMode ? 'Actualizar' : 'Crear' }}</button>
+      <button type="button" (click)="resetForm()">Cancelar</button>
+    </form>
+  
+    <h3>Lista de Clientes</h3>
+    <ul>
+      <li *ngFor="let cliente of clientes">
+        {{ cliente.cedula }} - {{ cliente.nombre }} - {{ cliente.direccion }}
+        <button (click)="selectCliente(cliente)">Editar</button>
+        <button (click)="deleteCliente(cliente.cedula)">Eliminar</button>
+      </li>
+    </ul>
+  </div>
+  
